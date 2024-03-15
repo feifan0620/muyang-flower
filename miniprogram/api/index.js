@@ -1,15 +1,16 @@
 // 导入封装好的网络请求模块
-import instance from '../utils/http'
+import http from '../utils/http'
 
 /**
- * 通过并发请求获取首页的数据
+ * @description 通过并发请求获取首页数据
+ * @returns Promise
  */
 export const reqIndexData = () => {
-  return instance.all(
-    instance.get('/index/findBanner'),
-    instance.get('/index/findCategory1'),
-    instance.get('/index/advertisement'),
-    instance.get('/index/findListGoods'),
-    instance.get('/index/findRecommendGoods')
+  return http.all(
+    http.get('/index/findBanner'),
+    http.get('/index/findCategory1'),
+    http.get('/index/advertisement'),
+    http.get('/index/findListGoods'),
+    http.get('/index/findRecommendGoods')
   )
 }

@@ -20,5 +20,11 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {}
+  methods: {},
+
+  // lifetimes: {
+  //   created() {
+  //     console.log(this.properties)
+  //   }
+  // }
 })

@@ -2,11 +2,7 @@
 <view class="container">
   <!-- 顶部展示图 -->
   <view class="top-show">
-    <image
-      mode="widthFix"
-      class="top-show-img"
-      src="/assets/images/banner.jpg"
-    ></image>
+    <image mode="widthFix" class="top-show-img" src="/assets/images/banner.jpg"></image>
   </view>
 
   <view class="bottom-show">
@@ -42,7 +38,7 @@
       </view>
 
       <view class="order-content-wrap">
-        <view class="order-content-item" wx:for="{{ initpanel }}">
+        <view class="order-content-item" wx:for="{{ initpanel }}" wx:key="index">
           <navigator url="{{ item.url }}">
             <view class="iconfont {{ item.iconfont }}"></view>
             <text>{{ item.title }}</text>

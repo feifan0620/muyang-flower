@@ -5,10 +5,38 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "libVersion": "3.3.4",
+  "libVersion": "3.3.5",
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "账户设置",
+          "pathName": "pages/settings/settings",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "修改个人资料",
+          "pathName": "modules/settingModule/pages/profile/profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的页面",
+          "pathName": "pages/my/my",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "登录页面",
+          "pathName": "pages/login/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
         {
           "name": "分类页面",
           "pathName": "pages/category/category",

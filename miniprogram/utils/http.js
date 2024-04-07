@@ -1,3 +1,4 @@
+// miniprogram\utils\instance.js
 import WxRequest from 'mina-request'
 import { getStorage, clearStorage } from './storage'
 import { modal, toast } from './extendApi'

@@ -13,12 +13,10 @@
                 <text class="default-tag">默认</text>
               </view>
 
-              <view class="address-info">
-                甘肃省甘南藏族自治州碌曲县松日鼎盛大厦0层
-              </view>
+              <view class="address-info"> 甘肃省甘南藏族自治州碌曲县松日鼎盛大厦0层 </view>
             </view>
 
-            <view class="editBtn" bindtap="toEdit">
+            <view class="editBtn" bind:tap="toEdit">
               <van-icon name="edit" size="22px" color="#999" />
             </view>
           </view>
@@ -35,9 +33,7 @@
 
   <view class="footer">
     <view class="btn">
-      <navigator url="/modules/settingModule/pages/address/add/index">
-        新增地址
-      </navigator>
+      <navigator url="/modules/settingModule/pages/address/add/index"> 新增地址 </navigator>
     </view>
   </view>
 </view>

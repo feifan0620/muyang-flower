@@ -1,0 +1,23 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  '@vant/weapp':
+    specifier: ^1.11.4
+    version: 1.11.4
+  mina-request:
+    specifier: ^1.0.8
+    version: 1.0.8
+
+packages:
+
+  /@vant/weapp@1.11.4:
+    resolution: {integrity: sha512-egOsWO4hVMP1SQSqQ46jy8UD3WysvlnUecRzPM21Y3ovkOFZ6wlaO7oHQmTXRpwr+V41Qri1qEbtNjhVxFqdyw==}
+    dev: false
+
+  /mina-request@1.0.8:
+    resolution: {integrity: sha512-IzsnzZEAJOyQnYMKhut7+m6EygiiZOd5yvspNplVlVT026ucaaJrie92k0K0Umw0jkASvJn1WXjSq+FntYj/GQ==}
+    dev: false

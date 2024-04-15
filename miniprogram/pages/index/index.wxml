@@ -1,5 +1,5 @@
 <import src="./skeleton/index.skeleton" />
-<template is="skeleton" wx:if="{{ loading }}" />
+<template loading="chiaroscuro" is="skeleton" wx:if="{{ loading }}" />
 
 <view wx:else class="index-container">
   <!--首页背景图-->

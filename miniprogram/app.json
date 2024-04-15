@@ -81,5 +81,11 @@
       "network": "all",
       "packages": ["settingModule"]
     }
+  },
+  "requiredPrivateInfos": ["chooseLocation", "getLocation"],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取您当前地理位置以填写地址信息"
+    }
   }
 }

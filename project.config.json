@@ -35,5 +35,10 @@
     "tabSize": 2
   },
   "appid": "wxfc9b80e3485991bb",
-  "srcMiniprogramRoot": "miniprogram/"
+  "srcMiniprogramRoot": "miniprogram/",
+  "skeletonConfig": {
+    "global": {
+      "loading": "shine"
+    }
+  }
 }

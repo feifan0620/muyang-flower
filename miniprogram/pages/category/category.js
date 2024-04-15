@@ -21,8 +21,6 @@ Page({
     this.setData({
       activeIndex: index
     })
-
-    console.log(this.data.activeIndex)
   },
 
   //监听页面的加载

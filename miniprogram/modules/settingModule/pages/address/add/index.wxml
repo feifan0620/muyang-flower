@@ -5,30 +5,25 @@
       <!-- 收货人 -->
       <view class="row">
         <text class="title">收货人</text>
-        <input
-          placeholder-style="color: #969799"
-          placeholder="请输入收货人姓名"
-        />
+        <input placeholder-style="color: #969799" model:value="{{ name }}" placeholder="请输入收货人姓名" />
       </view>
 
       <!-- 手机号码 -->
       <view class="row">
         <text class="title">手机号码</text>
-        <input
-          placeholder-style="color: #969799"
-          placeholder="请输入收货人手机号"
-        />
+        <input placeholder-style="color: #969799" model:value="{{ phone }}" placeholder="请输入收货人手机号" />
       </view>
 
       <!-- 省市区 -->
       <view class="row">
         <text class="title">所在地区</text>
 
-        <picker mode="region">
-          <view class="placeholder"> 请选择收货人所在地区</view>
+        <picker mode="region" value="{{ [provinceName,cityName,districtName] }}" bindchange="onAddressChange">
+          <view class="region" wx:if="{{ provinceName }}">{{ provinceName + ' ' +cityName + ' ' + districtName }}</view>
+          <view class="placeholder" wx:else> 请选择收货人所在地区</view>
         </picker>
 
-        <view class="location">
+        <view class="location" bindtap="onLocation">
           <van-icon name="location-o" color="#777" />
           <text>定位</text>
         </view>
@@ -37,17 +32,13 @@
       <!-- 详细地址 -->
       <view class="row">
         <text class="title">详细地址</text>
-        <textarea
-          auto-height
-          placeholder-style="color: #969799"
-          placeholder="门牌号(例：5号楼1单元203室)"
-        />
+        <textarea auto-height model:value="{{ address }}" placeholder-style="color: #969799" placeholder="门牌号(例：5号楼1单元203室)" />
       </view>
 
       <!-- 设置默认地址 -->
       <view class="row">
         <text class="title">设置默认地址</text>
-        <switch color="#f3514f" class="checkbox" />
+        <switch color="#f3514f" model:checked="{{ isDefault }}" class="checkbox" />
       </view>
     </view>
 

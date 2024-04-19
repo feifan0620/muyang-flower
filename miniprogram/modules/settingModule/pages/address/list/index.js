@@ -14,10 +14,11 @@ Page({
   },
 
   // 去编辑页面
-  toEdit() {
+  toEdit(event) {
     wx.navigateTo({
       url: '/modules/settingModule/pages/address/add/index'
     })
+    console.log(event)
   },
 
   onLoad() {

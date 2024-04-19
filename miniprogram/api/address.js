@@ -1,12 +1,12 @@
 import http from '../utils/http'
 
 /**
- * @description 添加收货地址
+ * @description 新增收货地址
  * @param {*} data 收货地址数据
  * @returns Promise
  */
 export const reqAddAddress = (data) => {
-  return http.post(`/userAddress/save/${data}`)
+  return http.post('/userAddress/save', data)
 }
 
 /**
@@ -32,7 +32,7 @@ export const reqAddressInfo = (id) => {
  * @returns Promise
  */
 export const reaUpdateAddress = (data) => {
-  return http.post(`/userAddress/update/${data}`)
+  return http.post('/userAddress/update', data)
 }
 
 /**

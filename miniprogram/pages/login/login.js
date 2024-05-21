@@ -35,6 +35,7 @@ ComponentWithStore({
           this.setUserInfo(data)
           // 返回之前的页面
           wx.navigateBack()
+          wx.toast({ title: '授权登陆成功' })
         }
       })
     }

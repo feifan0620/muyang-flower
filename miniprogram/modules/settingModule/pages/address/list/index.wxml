@@ -1,28 +1,28 @@
 <!--pages/address/list/index.wxml-->
 
-<view class="container address-list">
+<view class="container address-list" bind:tap="onSwipeCellPageTap">
   <view class="list-warpper" wx:if="{{ addressList.length }}">
     <view wx:for="{{ addressList }}" wx:key="id" class="list-item">
-      <van-swipe-cell right-width="{{ 65 }}">
+      <van-swipe-cell right-width="{{ 65 }}" id="swipe-cell-{{ item.id }}" bind:open="onSwipeCellOpen" bind:click="onSwipeCellClick">
         <van-cell-group border="{{ false }}">
           <view class="list-item-box">
             <view class="info">
               <view class="user-info">
                 <text>{{ item.name }}</text>
                 <text>{{ item.phone }}</text>
-                <text class="default-tag">{{ item.isDefault === 1 ? '默认' : '' }}</text>
+                <text class="default-tag" wx:if="{{ item.isDefault === 1 }}">默认</text>
               </view>
 
               <view class="address-info"> {{ item.fullAddress }} </view>
             </view>
 
-            <view class="editBtn" bind:tap="toEdit">
+            <view class="editBtn" bind:tap="toEdit" data-id="{{ item.id }}">
               <van-icon name="edit" size="22px" color="#999" />
             </view>
           </view>
         </van-cell-group>
         <!-- <van-icon name="delete" size="22px" color="#999" /> -->
-        <view slot="right" class="van-swipe-cell__right">
+        <view slot="right" class="van-swipe-cell__right" bindtap="delAddress" data-id="{{ item.id }}">
           <text>删除</text>
         </view>
       </van-swipe-cell>

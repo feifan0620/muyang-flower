@@ -1,4 +1,4 @@
-import { reqAddAddress } from '../../../../../api/address'
+import { reqAddAddress, reqAddressInfo, reaUpdateAddress } from '../../../../../api/address'
 // 引入QQMapWX核心类
 import QQMapWX from '../../../../../libs/qqmap-wx-jssdk'
 // 引入async-validator
@@ -40,13 +40,13 @@ Page({
     // 如果验证失败，不继续执行后续的逻辑
     if (!valid) return
 
-    console.log(params)
-
-    const res = await reqAddAddress(params)
+    // 如果 addressId 不为空则执行更新操作，否则执行新增操作
+    const res = this.addressId ? await reaUpdateAddress(params) : await reqAddAddress(params)
     if (res.code === 200) {
+      // 返回上级页面并给用户对应提示
       wx.navigateBack({
-        success() {
-          wx.toast({ title: '新增收货地址成功' })
+        success: () => {
+          wx.toast({ title: this.addressId ? '更新收货地址成功' : '新增收货地址成功' })
         }
       })
     }
@@ -70,45 +70,48 @@ Page({
 
   // 获取用户地理位置
   async onLocation() {
-    const { latitude, longitude, name } = await wx.chooseLocation()
-    this.qqmapsdk.reverseGeocoder({
-      // 传入经、纬度
-      location: {
-        latitude,
-        longitude
-      },
-      success: (res) => {
-        // 获取省市区名称和行政编码
-        const { province, city, district, adcode } = res.result.ad_info
-        // 获取街道名称和门牌号
-        const { street, street_number } = res.result.address_component
-        // 获取标准地址
-        const { standard_address } = res.result.formatted_addresses
-        // 组织并格式化地址信息，然后赋值给data中的字段
-        this.setData({
-          // 省名称
-          provinceName: province,
-          // 省编码，即 adcode 前两位加 0000
-          provinceCode: adcode.replace(adcode.substring(2, 6), '0000'),
-          // 市名称
-          cityName: city,
-          // 市编码，即 adcode 前四位位加 00
-          cityCode: adcode.replace(adcode.substring(4, 6), '00'),
-          // 区名称
-          districtName: district,
-          // 区编码，即 adcode，如果区不存在则为空
-          districtCode: district && adcode,
-          // 组织详细地址和完整地址
-          address: street_number + name,
-          fullAddress: standard_address + name
-        })
-      },
-      fail: function (err) {
-        console.log(err)
-      }
-    })
+    try {
+      const { latitude, longitude, name } = await wx.chooseLocation()
+      this.qqmapsdk.reverseGeocoder({
+        // 传入经、纬度
+        location: {
+          latitude,
+          longitude
+        },
+        success: (res) => {
+          // 获取省市区名称和行政编码
+          const { province, city, district, adcode } = res.result.ad_info
+          // 获取街道名称和门牌号
+          const { street, street_number } = res.result.address_component
+          // 获取标准地址
+          const { standard_address } = res.result.formatted_addresses
+          // 组织并格式化地址信息，然后赋值给data中的字段
+          this.setData({
+            // 省名称
+            provinceName: province,
+            // 省编码，即 adcode 前两位加 0000
+            provinceCode: adcode.replace(adcode.substring(2, 6), '0000'),
+            // 市名称
+            cityName: city,
+            // 市编码，即 adcode 前四位位加 00
+            cityCode: adcode.replace(adcode.substring(4, 6), '00'),
+            // 区名称
+            districtName: district,
+            // 区编码，即 adcode，如果区不存在则为空
+            districtCode: district && adcode,
+            // 组织详细地址和完整地址
+            address: street_number + name,
+            fullAddress: standard_address + name
+          })
+        }
+      })
+    } catch (error) {
+      console.log(error)
+      wx.toast({ title: '您取消了定位' })
+    }
   },
 
+  // 收货地址表单验证
   validateAddress(params) {
     // 验证收货人，是否只包含大小写字母、数字和中文字符
     const nameRegExp = '^[a-zA-Z\\d\\u4e00-\\u9fa5]+$'
@@ -149,10 +152,32 @@ Page({
     })
   },
 
-  onLoad() {
+  //显示收货地址信息
+  async showAddressInfo(id) {
+    // 如果id为空，则不执行后续逻辑，即当前页面为新增页面
+    if (!id) return
+
+    // 将 id 挂载到当前页面的实例(this)上
+    this.addressId = id
+
+    // 修改导航栏标题
+    wx.setNavigationBarTitle({
+      title: '更新收货地址'
+    })
+
+    // 获取收货地址详情
+    const { data } = await reqAddressInfo(this.addressId)
+
+    // 将收货地址信息回显到当前页面
+    this.setData(data)
+  },
+
+  onLoad(options) {
     // 实例化API核心类
     this.qqmapsdk = new QQMapWX({
       key: 'NBTBZ-NC5C4-RVKUT-KISEQ-DNRM6-TDB6U'
     })
+    // 显示 ID 对应的地址信息
+    this.showAddressInfo(options.id)
   }
 })

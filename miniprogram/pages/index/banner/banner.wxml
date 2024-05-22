@@ -1,19 +1,10 @@
 <!--pages/index/banner/banner.wxml-->
 <!-- 轮播图 -->
 <view class="swiper-box">
-  <swiper 
-    autoplay 
-    circular 
-    class="swiper" 
-    indicator-active-color="#FF734C" 
-    interval="2000" 
-    duration="1000" 
-    indicator-color="rgba(0, 0, 0, .3)" 
-    bindchange="getSwiperIndex"
-  >
+  <swiper autoplay circular class="swiper" indicator-active-color="#FF734C" interval="2000" duration="1000" indicator-color="rgba(0, 0, 0, .3)" bindchange="getSwiperIndex">
     <block wx:for="{{ bannerList }}" wx:key="index">
       <swiper-item class="swiper-item">
-        <navigator class="navigator" url="/pages/goods/detail/detail?goodsId={{ item.id }}">
+        <navigator class="navigator" url="/modules/goodsModule/pages/goods/detail/detail?goodsId={{ item.id }}" hover-class="none">
           <image class="img" src="{{ item.imageUrl }}"></image>
         </navigator>
       </swiper-item>

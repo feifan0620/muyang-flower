@@ -1,0 +1,65 @@
+// pages/goods/list/index.js
+import { reqGoodsList } from '../../../../../api/goods'
+
+Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    goodsList: [], // 商品列表数据
+    isFinish: false, // 判断数据是否加载完毕
+    total: 0,
+    requestData: {
+      page: 1,
+      limit: 10,
+      category1Id: '',
+      category2Id: ''
+    }
+  },
+
+  gotoBack() {
+    wx.navigateBack()
+  },
+
+  // 获取商品列表
+  async getGoodsList() {
+    wx.showLoading({
+      title: '数据加载中...'
+    })
+    const { data } = await reqGoodsList(this.data.requestData)
+    this.setData({
+      goodsList: [...this.data.goodsList, ...data.records],
+      total: data.total
+    })
+    wx.hideLoading()
+  },
+
+  // 页面上拉监听时间
+  onReachBottom() {
+    // 从页面数据中解构出需要的值
+    const { total, goodsList, requestData } = this.data
+    // 从页面 data 中的请求数据对象中解构出 page 属性
+    let { page } = requestData
+    // 如果当前商品数组的长度等于商品总数则表示加载完成
+    // 加载完成后给用户提示，同时不继续加载下一个数据
+    if (goodsList.length === total) {
+      this.setData({
+        isFinish: true
+      })
+      return
+    }
+    // 将 page 的值加1并更新 requestData 的值，以请求下一页的数据
+    this.setData({
+      // 复制 requestData 对象的值并与 page 合并（即更新对象中 page 属性的值）
+      requestData: { ...this.data.requestData, page: page + 1 }
+    })
+    // 重新请求商品列表
+    this.getGoodsList()
+  },
+
+  onLoad(options) {
+    // 对象合并，从后向前合并，相同的属性将会被覆盖
+    Object.assign(this.data.requestData, options)
+    this.getGoodsList()
+  }
+})

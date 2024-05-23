@@ -77,6 +77,7 @@ Page({
     })
     // 重新请求商品列表
     await this.getGoodsList()
+    // 手动关闭下拉刷新效果
     wx.stopPullDownRefresh()
   },
 

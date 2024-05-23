@@ -17,6 +17,12 @@ Page({
     })
   },
 
+  previewImage() {
+    wx.previewImage({
+      urls: this.data.goodsInfo.detailList
+    })
+  },
+
   // 加入购物车
   handleAddcart() {
     this.setData({
@@ -41,8 +47,11 @@ Page({
     console.log(event.detail)
   },
 
+  // 页面首次加载时触发
   onLoad(options) {
+    // 将参数 goodsId 挂载到页面实例上
     this.goodsId = options.goodsId ? options.goodsId : ''
+    // 获取商品详情数据
     this.getGoodsInfo()
   }
 })

@@ -1,64 +1,53 @@
-lockfileVersion: '9.0'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-importers:
-
-  .:
-    dependencies:
-      '@vant/weapp':
-        specifier: ^1.11.4
-        version: 1.11.4
-      async-validator:
-        specifier: ^4.2.5
-        version: 4.2.5
-      mina-request:
-        specifier: ^1.0.8
-        version: 1.0.8
-      mobx-miniprogram:
-        specifier: ^4.13.2
-        version: 4.13.2
-      mobx-miniprogram-bindings:
-        specifier: ^2.1.5
-        version: 2.1.5(mobx-miniprogram@4.13.2)
+dependencies:
+  '@vant/weapp':
+    specifier: ^1.11.4
+    version: 1.11.4
+  async-validator:
+    specifier: ^4.2.5
+    version: 4.2.5
+  mina-request:
+    specifier: ^1.0.8
+    version: 1.0.8
+  mobx-miniprogram:
+    specifier: ^4.13.2
+    version: 4.13.2
+  mobx-miniprogram-bindings:
+    specifier: ^2.1.5
+    version: 2.1.5(mobx-miniprogram@4.13.2)
 
 packages:
 
-  '@types/wechat-miniprogram@3.4.7':
+  /@types/wechat-miniprogram@3.4.7:
     resolution: {integrity: sha512-X6SVOOaTPQN24lYBSV5jLuWyIedx8DGJnT0VUBnoNzJruhxotCL28ecGb7AO5JfXOXtHqSS5+CnJ70NxFxmisA==}
+    dev: false
 
-  '@vant/weapp@1.11.4':
+  /@vant/weapp@1.11.4:
     resolution: {integrity: sha512-egOsWO4hVMP1SQSqQ46jy8UD3WysvlnUecRzPM21Y3ovkOFZ6wlaO7oHQmTXRpwr+V41Qri1qEbtNjhVxFqdyw==}
+    dev: false
 
-  async-validator@4.2.5:
+  /async-validator@4.2.5:
     resolution: {integrity: sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg==}
+    dev: false
 
-  mina-request@1.0.8:
+  /mina-request@1.0.8:
     resolution: {integrity: sha512-IzsnzZEAJOyQnYMKhut7+m6EygiiZOd5yvspNplVlVT026ucaaJrie92k0K0Umw0jkASvJn1WXjSq+FntYj/GQ==}
+    dev: false
 
-  mobx-miniprogram-bindings@2.1.5:
+  /mobx-miniprogram-bindings@2.1.5(mobx-miniprogram@4.13.2):
     resolution: {integrity: sha512-2HuiQL5FPgoYJ8XIMdw5iD6XT61LtsujaGyizbN845iZcsLmrKZiF0dKd4jQTSuC/6rGozqqhcy0sDc7qcpjYQ==}
     peerDependencies:
       mobx-miniprogram: ^4.0.0
-
-  mobx-miniprogram@4.13.2:
-    resolution: {integrity: sha512-C3HtkqHCLKp35N2gXA80yFD6PNfSqwioPFmnjTQpBLrEqYm1F6yiWZ57CW+8FqgmR306mw6ZfsM5q7hSTHw8BQ==}
-
-snapshots:
-
-  '@types/wechat-miniprogram@3.4.7': {}
-
-  '@vant/weapp@1.11.4': {}
-
-  async-validator@4.2.5: {}
-
-  mina-request@1.0.8: {}
-
-  mobx-miniprogram-bindings@2.1.5(mobx-miniprogram@4.13.2):
     dependencies:
       '@types/wechat-miniprogram': 3.4.7
       mobx-miniprogram: 4.13.2
+    dev: false
 
-  mobx-miniprogram@4.13.2: {}
+  /mobx-miniprogram@4.13.2:
+    resolution: {integrity: sha512-C3HtkqHCLKp35N2gXA80yFD6PNfSqwioPFmnjTQpBLrEqYm1F6yiWZ57CW+8FqgmR306mw6ZfsM5q7hSTHw8BQ==}
+    dev: false

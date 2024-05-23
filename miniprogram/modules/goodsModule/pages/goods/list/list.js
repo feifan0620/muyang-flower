@@ -67,7 +67,7 @@ Page({
   },
 
   // 页面下拉监听事件
-  onPullDownRefresh() {
+  async onPullDownRefresh() {
     // 初始化页面数据
     this.setData({
       goodsList: [], // 商品列表数据
@@ -76,7 +76,8 @@ Page({
       requestData: { ...this.data.requestData, page: 1 }
     })
     // 重新请求商品列表
-    this.getGoodsList()
+    await this.getGoodsList()
+    wx.stopPullDownRefresh()
   },
 
   onLoad(options) {

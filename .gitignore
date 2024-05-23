@@ -3,3 +3,4 @@ node_modules/
 
 # 忽略miniprogram下的miniprogram_npm文件夹
 miniprogram/miniprogram_npm/
+.DS_Store

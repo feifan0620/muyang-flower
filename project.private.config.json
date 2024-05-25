@@ -5,10 +5,17 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "libVersion": "3.4.2",
+  "libVersion": "3.4.4",
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "购物车页面",
+          "pathName": "pages/cart/cart",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
         {
           "name": "账户设置",
           "pathName": "pages/settings/settings",

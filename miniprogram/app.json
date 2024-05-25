@@ -94,5 +94,8 @@
     "scope.userLocation": {
       "desc": "获取您当前地理位置以填写地址信息"
     }
+  },
+  "resolveAlias": {
+    "@/*":"/*"
   }
 }

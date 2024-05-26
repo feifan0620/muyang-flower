@@ -1,14 +1,5 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/category/category",
-    "pages/cart/cart",
-    "pages/my/my",
-    "pages/order/detail/detail",
-    "pages/order/list/list",
-    "pages/login/login",
-    "pages/settings/settings"
-  ],
+  "pages": ["pages/index/index", "pages/category/category", "pages/cart/cart", "pages/my/my", "pages/login/login", "pages/settings/settings"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#f3514f",
@@ -74,6 +65,11 @@
       "pages": ["pages/address/add/index", "pages/address/list/index", "pages/profile/profile"]
     },
     {
+      "root": "modules/orderModule",
+      "name": "orderModule",
+      "pages": ["pages/order/detail/detail", "pages/order/list/list"]
+    },
+    {
       "root": "modules/goodsModule",
       "name": "goodsModule",
       "pages": ["pages/goods/list/list", "pages/goods/detail/detail"]
@@ -83,6 +79,10 @@
     "pages/settings/settings": {
       "network": "all",
       "packages": ["settingModule"]
+    },
+    "pages/cart/cart": {
+      "network": "all",
+      "packages": ["orderModule"]
     },
     "pages/category/category": {
       "network": "all",
@@ -96,6 +96,6 @@
     }
   },
   "resolveAlias": {
-    "@/*":"/*"
+    "@/*": "/*"
   }
 }

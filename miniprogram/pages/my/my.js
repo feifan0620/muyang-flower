@@ -26,7 +26,7 @@ ComponentWithStore({
 
   storeBindings: {
     store: userStore,
-    fields: ['userInfo','token']
+    fields: ['userInfo', 'token']
   },
 
   methods: {

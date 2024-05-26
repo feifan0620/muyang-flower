@@ -12,16 +12,16 @@ export const reqOrderDetail = () => {
  * @description 获取订单地址
  * @returns Promise
  */
-export const reqOrderDetail = () => {
+export const reqOrderAddress = () => {
   return http.get('/userAddress/getOrderAddress')
 }
 
 /**
- * @description 立即购买
+ * @description 获取立即购买商品的详情信息
  * @param {*} params { goodsId:商品ID, blessing:祝福语 }
  * @returns Promise
  */
-export const reqBuyNow = ({ goodsId, ...data }) => {
+export const reqBuyNowGoods = ({ goodsId, ...data }) => {
   return http.get(`/order/buy/${goodsId}`, data)
 }
 
@@ -47,7 +47,7 @@ export const reqPreBuyInfo = (orderNo) => {
  * @param {*} orderNo 订单 ID
  * @returns Promise
  */
-export const reqPreBuyInfo = (orderNo) => {
+export const reqPayStatu = (orderNo) => {
   return http.get(`/webChat/queryPayStatus/${orderNo}`)
 }
 

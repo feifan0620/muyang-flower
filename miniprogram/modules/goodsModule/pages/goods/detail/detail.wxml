@@ -1,7 +1,7 @@
 <view class="container goods-detail">
   <!-- 商品大图 -->
   <view class="banner-img">
-    <image class="img" src="{{ goodsInfo.imageUrl }} " bindtap="previewImage" />
+    <image class="img" src="{{ goodsInfo.imageUrl }}" bindtap="previewImage" />
   </view>
 
   <!-- 商品的基本信息 -->

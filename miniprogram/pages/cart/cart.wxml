@@ -1,6 +1,6 @@
-<view>
+<view bindtap="onSwipeCellPageTap">
   <!-- 购物车列表结构 -->
-  <view wx:if="{{ token && cartList.length }}" class="container goods-wrap" bindtap="onSwipeCellPageTap">
+  <view wx:if="{{ token && cartList.length }}" class="container goods-wrap">
     <view class="goods-item" wx:for="{{ cartList }}" wx:key="goodsId">
       <van-swipe-cell class="goods-swipe" id="swipe-cell-{{ item.goodsId }}" right-width="{{ 65 }}" bind:open="onSwipeCellOpen" bind:click="onSwipeCellClick">
         <van-cell-group border="{{ false }}">
@@ -50,7 +50,7 @@
   </van-empty>
 
   <!-- 底部工具栏 -->
-  <van-submit-bar wx:if="{{ token && cartList.length }}" price="{{ totalPrice * 100 }}" button-text="去结算" tip="{{ true }}">
+  <van-submit-bar wx:if="{{ token && cartList.length }}" price="{{ totalPrice * 100 }}" button-text="去结算" tip="{{ true }}" bindsubmit="toOrder">
     <van-checkbox value="{{ selectAllStatus }}" checked-color="#FA4126" bind:change="updateAllStatus"> 全选 </van-checkbox>
   </van-submit-bar>
 </view>

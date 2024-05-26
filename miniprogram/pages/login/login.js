@@ -27,6 +27,10 @@ ComponentWithStore({
             // 登录失败后给用户进行提示
             toast({ title: '授权失败，请稍后再试~~~' })
           }
+          toast({
+            title: '',
+            icon: 'loading'
+          })
           // 调用接口 API，获取用户信息
           const { data } = await reqUserInfo()
           // 将用户信息存储到本地
@@ -35,7 +39,7 @@ ComponentWithStore({
           this.setUserInfo(data)
           // 返回之前的页面
           wx.navigateBack()
-          wx.toast({ title: '授权登陆成功' })
+          // toast({ title: '授权登陆成功' })
         }
       })
     }

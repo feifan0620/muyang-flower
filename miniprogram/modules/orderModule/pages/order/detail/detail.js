@@ -1,47 +1,42 @@
-// modules/orderModule/modules/orderModule/pages/order/detail/detail.js
 Page({
-  /**
-   * 页面的初始数据
-   */
-  data: {},
+  data: {
+    buyName: '', // 订购人姓名
+    buyPhone: '', // 订购人手机号
+    orderAddress:'', // 收货地址
+    deliveryDate: '选择送达日期', // 期望送达日期
+    blessing: '', // 祝福语
+    show: false, // 期望送达日期弹框
+    minDate: new Date().getTime(),
+    currentDate: new Date().getTime()
+  },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {},
+  // 选择期望送达日期
+  onShowDateTimerPopUp() {
+    this.setData({
+      show: true
+    })
+  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
+  // 期望送达日期确定按钮
+  onConfirmTimerPicker(event) {
+    this.setData({
+      show: false
+    })
+  },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
+  // 期望送达日期取消按钮 以及 关闭弹框时触发
+  onCancelTimePicker() {
+    this.setData({
+      show: false,
+      minDate: new Date().getTime(),
+      currentDate: new Date().getTime()
+    })
+  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {}
+  // 跳转到收货地址
+  toAddress() {
+    wx.navigateTo({
+      url: '/modules/settingModule/pages/address/list/index'
+    })
+  }
 })

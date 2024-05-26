@@ -4,7 +4,7 @@ import { userStore } from '@/stores/userStore'
 import { reqCartList, reqCheckCart, reqCheckAllCart, reqAddToCart, reqDelGoods } from '@/api/cart'
 import { debounce } from 'miniprogram-licia'
 import { swipeCellBehavior } from '@/behavior/swipeCellBehavior'
-import { modal } from '@/utils/extendApi'
+import { modal, toast } from '@/utils/extendApi'
 // 导入 miniprogram-computed 的 behavior
 const computedBehavior = require('miniprogram-computed').behavior
 ComponentWithStore({
@@ -17,6 +17,7 @@ ComponentWithStore({
       // cartList数组不为空且数组中的每个元素都为选中状态才返回 true ,否则返回 false
       return data.cartList.length !== 0 && data.cartList.every((item) => item.isChecked === 1)
     },
+    // 选中商品的总价
     totalPrice(data) {
       let totalPrice = 0
       data.cartList.forEach((item) => {
@@ -85,7 +86,13 @@ ComponentWithStore({
       // 调用接口，更新服务端的购物车商品全选状态
       const res = await reqCheckAllCart(isAllChecked)
       if (res.code === 200) {
-        // 对 cartList 进行深拷贝，使新数组与原数组的状态互不影响
+        // this.data.cartList.forEach(item =>{
+        //   this.setData(
+        //     item.isChecked = isAllChecked
+        //   )
+        // })
+        // 频繁调用this.setData()会产生性能问题，所有不能直接对原数组的每一项赋值
+        // 对 cartList 进行深拷贝，对新数组的每一项遍历，再将新数组的值赋给原数组
         const newCartList = JSON.parse(JSON.stringify(this.data.cartList))
         // 对商品列表中的每个元素进行遍历，使其都为选中或不选中状态
         newCartList.forEach((item) => {
@@ -100,12 +107,12 @@ ComponentWithStore({
     // 更新商品购买数量
     changeBuynum: debounce(async function (event) {
       // 如果商品购买数量大于200，则将数据重置为200
-      let buynum = event.detail > 200 ? 200 : event.detail
+      let newbuynum = event.detail > 200 ? 200 : event.detail
       // 从事件对象中结构出商品ID、商品索引和原购买数量
       const { id: goodsId, index, oldbuynum } = event.target.dataset
       // 使用正则验证购买数量是否在1到200之间
       const reg = /^([1-9]|[1-9]\d|1\d{2}|200)$/
-      const regRes = reg.test(buynum)
+      const regRes = reg.test(newbuynum)
       // 如果验证不通过则将购买数量重置为原购买数量并不继续执行后续逻辑
       if (!regRes) {
         this.setData({
@@ -114,7 +121,7 @@ ComponentWithStore({
         return
       }
       // 计算出购买数量差值
-      const discount = buynum - oldbuynum
+      const discount = newbuynum - oldbuynum
       // 若差值为0，即购买数量没有改变，就不把数据发送给服务器
       if (discount === 0) return
       // 将改变后的数据发送给服务器
@@ -122,10 +129,13 @@ ComponentWithStore({
       // 发送成功后同步修改本地数据
       if (res.code === 200) {
         this.setData({
-          [`cartList[${index}].count`]: buynum
+          [`cartList[${index}].count`]: newbuynum,
+          // 如果购买数量发生改变则选中此商品
+          [`cartList[${index}].isChecked`]: 1
         })
       }
     }, 500),
+    // 删除购物车中的商品
     async delCartGoods(event) {
       const { id: goodsId } = event.target.dataset
       const modalRes = await modal({
@@ -136,11 +146,25 @@ ComponentWithStore({
         this.getCartList()
       }
     },
+    // 跳转到订单结算页面
+    toOrder() {
+      if (this.data.totalPrice === 0) {
+        toast({
+          title: '请选择需要购买的商品'
+        })
+        return
+      }
+      wx.navigateTo({
+        url: '/modules/orderModule/pages/order/detail/detail'
+      })
+    },
     // 页面显示时调用
     onShow() {
       this.getCartList()
     },
+    // 页面隐藏时调用
     onHide() {
+      // 关闭所有滑块
       this.onSwipeCellCommonClick()
     }
   }

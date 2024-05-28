@@ -1,5 +1,8 @@
-import { reqAddressList, reqDeleteAddress } from '../../../../../api/address'
-import { swipeCellBehavior } from '../../../../../behavior/swipeCellBehavior'
+import { reqAddressList, reqDeleteAddress } from '@/api/address'
+import { swipeCellBehavior } from '@/behavior/swipeCellBehavior'
+import { toast } from '@/utils/extendApi'
+
+const app = getApp()
 
 Page({
   behaviors: [swipeCellBehavior],
@@ -41,6 +44,26 @@ Page({
     })
   },
 
+  // 更换收货地址
+  changeAddress(event) {
+    // 如果参数 flag 不等于1，即不是从订单详情页跳转到当前页面，则不继续执行后续逻辑
+    if (this.flag !== '1') return
+    // 从事件对象中获取地址 ID 
+    const addressId = event.target.dataset.id
+    // 使用获取到地址 ID 从当前页面数据的 addressList 数组中找到对应的地址，即需要更换成的地址
+    const address = this.data.addressList.find((item) => item.id === addressId)
+    // 如果获取成功则赋给全局数据对象中的 address 并返回上一个页面
+    if (address) {
+      app.globalData.address = address
+      wx.navigateBack()
+    }
+  },
+
+  // 页面加载时获取参数 flag并挂载到当前页面的实例上 
+  onLoad(options) {
+    this.flag = options.flag
+  },
+  // 页面显示时获取地址列表
   onShow() {
     this.getAddressList()
   }

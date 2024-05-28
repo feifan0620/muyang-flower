@@ -9,16 +9,15 @@
 
     <view class="order-address detail-flex" wx:else>
       <view class="address-content">
-        <view class="title">甘肃省 甘南藏族自治州 碌曲县</view>
-        <!-- <view class="detail">松日鼎盛大厦0层0号</view> -->
+        <view class="title">{{ orderAddress.fullAddress }}</view>
         <view class="info detail-flex">
-          <text>测试</text>
-          <text>130839991443</text>
+          <text>{{ orderAddress.name }}</text>
+          <text>{{ orderAddress.phone }}</text>
         </view>
       </view>
 
       <view class="select-address">
-        <navigator class="navigator" url="/modules/settingModule/pages/address/list/index">
+        <navigator class="navigator" url="/modules/settingModule/pages/address/list/index?flag=1">
           <van-icon color="#bbb" name="arrow" size="22px" />
         </navigator>
       </view>
@@ -62,28 +61,15 @@
   <view class="goods-wraper">
     <!-- 商品清单 -->
     <view class="goods-list">
-      <view class="goods-item detail-flex">
+      <view class="goods-item detail-flex" wx:for="{{ orderInfo.cartVoList }}" wx:key="goodsId">
         <view class="img">
-          <image src="/assets/images/floor-img.jpg" />
+          <image src="{{ item.imageUrl }}" />
         </view>
         <view class="content">
-          <view class="goods-title">[鲜花]韩式花篮/阳光使者</view>
+          <view class="goods-title">{{ item.name }}</view>
           <view class="goods-price">
-            <view class="price"> ¥ 99.0 </view>
-            <view>x1</view>
-          </view>
-        </view>
-      </view>
-
-      <view class="goods-item detail-flex">
-        <view class="img">
-          <image src="/assets/images/floor-img.jpg" />
-        </view>
-        <view class="content">
-          <view class="goods-title">[鲜花]韩式花篮/阳光使者</view>
-          <view class="goods-price">
-            <view class="price"> ¥ 99.0 </view>
-            <view>x1</view>
+            <view class="price"> ¥ {{ item.price }} </view>
+            <view>x{{ item.count }}</view>
           </view>
         </view>
       </view>
@@ -92,7 +78,7 @@
 
   <!-- 支付区域 -->
   <view class="footer detail-flex">
-    <view class="left"> ¥499 </view>
+    <view class="left"> ¥ {{ orderInfo.totalAmount }} </view>
     <viwe class="right">提交订单</viwe>
   </view>
 

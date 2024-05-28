@@ -1,7 +1,10 @@
 <view bindtap="onSwipeCellPageTap">
   <!-- 购物车列表结构 -->
   <view wx:if="{{ token && cartList.length }}" class="container goods-wrap">
-    <view class="goods-item" wx:for="{{ cartList }}" wx:key="goodsId">
+    <view 
+      class="goods-item" 
+      wx:for="{{ cartList }}" 
+      wx:key="goodsId">
       <van-swipe-cell class="goods-swipe" id="swipe-cell-{{ item.goodsId }}" right-width="{{ 65 }}" bind:open="onSwipeCellOpen" bind:click="onSwipeCellClick">
         <van-cell-group border="{{ false }}">
           <view class="goods-info">

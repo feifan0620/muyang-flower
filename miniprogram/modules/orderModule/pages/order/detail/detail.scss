@@ -1,5 +1,13 @@
 /* pages/order/index.wxss */
 
+.van-loading {
+  position: absolute; /* 设置为绝对定位 */
+  top: 45%; /* 将组件顶部与容器的垂直中点对齐 */
+  left: 50%; /* 将组件左侧与容器的水平中点对齐 */
+  transform: translate(-50%, -50%); /* 调整组件的位置，使其完全居中 */
+  z-index: 999; /* 确保加载动画在其他内容之上 */
+}
+
 .detail-flex {
   display: flex;
 }
@@ -84,7 +92,6 @@
     .goods-item {
       display: flex;
       margin-bottom: 14px;
-
       .img {
         width: 64px;
         height: 69px;

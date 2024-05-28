@@ -1,8 +1,8 @@
 <!--pages/address/list/index.wxml-->
 
-<view class="container address-list" bind:tap="onSwipeCellPageTap">
+<view class="container address-list" bindtap="onSwipeCellPageTap">
   <view class="list-warpper" wx:if="{{ addressList.length }}">
-    <view wx:for="{{ addressList }}" wx:key="id" class="list-item">
+    <view wx:for="{{ addressList }}" wx:key="id" class="list-item" bindtap="changeAddress" data-id="{{ item.id }}">
       <van-swipe-cell right-width="{{ 65 }}" id="swipe-cell-{{ item.id }}" bind:open="onSwipeCellOpen" bind:click="onSwipeCellClick">
         <van-cell-group border="{{ false }}">
           <view class="list-item-box">

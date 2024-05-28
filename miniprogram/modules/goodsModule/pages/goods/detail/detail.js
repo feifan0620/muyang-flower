@@ -78,14 +78,6 @@ Page({
       })
       return
     }
-    if (blessing === '') {
-      modal({
-        title: '提示',
-        content: '请输入祝福语',
-        showCancel: false
-      })
-      return
-    }
     // 如果 buynow 为0，则用户点击的是加入购物车,否则为立即购买
     if (buynow === 0) {
       const res = await reqAddToCart({ goodsId, count, blessing })

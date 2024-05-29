@@ -44,12 +44,12 @@
       />
 
       <!-- 期望送达日期 -->
-      <van-cell label-class="filed-label" title="期望送达日期：" is-link value="{{ deliveryDate }}" bind:click="onShowDateTimerPopUp" />
+      <van-cell label-class="filed-label" title="期望送达日期：" is-link value="{{ deliveryDate ? deliveryDate : '选择送达日期' }}" bind:click="onShowDateTimerPopUp" />
 
       <van-cell title="订单备注：" border="{{ false }}" use-label-slot>
         <textarea
           slot="label"
-          model:value="{{ remarks }}"
+          model:value="{{ blessing }}"
           class="form-textarea"
           placeholder="写上您的祝福语，给心爱的他（她）送上你的祝福（请勿填写特殊符号或表情符号）"
           name="textarea"
@@ -79,7 +79,7 @@
   <!-- 支付区域 -->
   <view class="footer detail-flex">
     <view class="left"> ¥ {{ orderInfo.totalAmount }} </view>
-    <viwe class="right">提交订单</viwe>
+    <viwe class="right" bindtap="orderSubmit">提交订单</viwe>
   </view>
 
   <van-popup show="{{ show }}" round position="bottom" custom-style="height: 50%" bind:close="onCancelTimePicker">

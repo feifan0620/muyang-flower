@@ -78,7 +78,7 @@ Page({
       })
       return
     }
-    // 如果 buynow 为0，则用户点击的是加入购物车,否则为立即购买
+    // 如果 buynow 为0，则用户点击的是加入购物车
     if (buynow === 0) {
       const res = await reqAddToCart({ goodsId, count, blessing })
       // 数据添加成功后对用户进行提示并刷新商品数量
@@ -91,6 +91,7 @@ Page({
         })
       }
     } else {
+      // 否则为立即购买
       wx.navigateTo({
         url: `/modules/orderModule/pages/order/detail/detail?goodsId=${goodsId}&blessing=${blessing}`
       })

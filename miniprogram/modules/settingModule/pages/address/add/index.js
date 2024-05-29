@@ -1,9 +1,8 @@
 import { reqAddAddress, reqAddressInfo, reaUpdateAddress } from '../../../../../api/address'
 // 引入QQMapWX核心类
 import QQMapWX from '../../../../../libs/qqmap-wx-jssdk'
-// 引入async-validator
+// 引入async-validator,对参数进行验证
 import Schema from 'async-validator'
-//
 
 Page({
   // 页面的初始数据

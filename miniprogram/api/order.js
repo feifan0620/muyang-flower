@@ -29,8 +29,8 @@ export const reqBuyNowGoods = ({ goodsId, ...data }) => {
  * @description 提交订单
  * @returns Promise
  */
-export const reqSubmitOrder = () => {
-  return http.post('/order/submitOrder')
+export const reqSubmitOrder = (data) => {
+  return http.post('/order/submitOrder', data)
 }
 
 /**

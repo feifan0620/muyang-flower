@@ -2,11 +2,11 @@
 
 <view class="container address-list" bindtap="onSwipeCellPageTap">
   <view class="list-warpper" wx:if="{{ addressList.length }}">
-    <view wx:for="{{ addressList }}" wx:key="id" class="list-item" bindtap="changeAddress" data-id="{{ item.id }}">
-      <van-swipe-cell right-width="{{ 65 }}" id="swipe-cell-{{ item.id }}" bind:open="onSwipeCellOpen" bind:click="onSwipeCellClick">
+    <view wx:for="{{ addressList }}" wx:key="id" class="list-item" bind:click="onSwipeCellClick">
+      <van-swipe-cell right-width="{{ 65 }}" id="swipe-cell-{{ item.id }}" bind:open="onSwipeCellOpen">
         <van-cell-group border="{{ false }}">
           <view class="list-item-box">
-            <view class="info">
+            <view class="info" bind:tap="changeAddress" data-id="{{ item.id }}">
               <view class="user-info">
                 <text>{{ item.name }}</text>
                 <text>{{ item.phone }}</text>
@@ -15,7 +15,6 @@
 
               <view class="address-info"> {{ item.fullAddress }} </view>
             </view>
-
             <view class="editBtn" bind:tap="toEdit" data-id="{{ item.id }}">
               <van-icon name="edit" size="22px" color="#999" />
             </view>

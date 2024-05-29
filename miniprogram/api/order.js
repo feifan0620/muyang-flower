@@ -47,7 +47,7 @@ export const reqPreBuyInfo = (orderNo) => {
  * @param {*} orderNo 订单 ID
  * @returns Promise
  */
-export const reqPayStatu = (orderNo) => {
+export const reqPayStatus = (orderNo) => {
   return http.get(`/webChat/queryPayStatus/${orderNo}`)
 }
 

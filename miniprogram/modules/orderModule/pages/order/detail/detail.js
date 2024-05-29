@@ -1,5 +1,6 @@
-import { reqOrderAddress, reqOrderDetail, reqBuyNowGoods } from '@/api/order'
+import { reqOrderAddress, reqOrderDetail, reqBuyNowGoods, reqSubmitOrder, reqPreBuyInfo, reqPayStatus } from '@/api/order'
 import { formatTime } from '@/utils/formatTime'
+import { toast } from '@/utils/extendApi'
 // 引入async-validator,对参数进行验证
 import Schema from 'async-validator'
 // 获取 App 实例
@@ -7,8 +8,8 @@ const app = getApp()
 
 Page({
   data: {
-    buyName: '', // 订购人姓名
-    buyPhone: '', // 订购人手机号
+    buyName: 'dasd', // 订购人姓名
+    buyPhone: '13285462310', // 订购人手机号
     orderAddress: {}, // 订单收货地址
     orderInfo: {}, // 订单详情
     deliveryDate: '', // 期望送达日期
@@ -31,7 +32,45 @@ Page({
     }
 
     const { valid } = await this.validatePerson(params)
-    console.log(valid)
+
+    if (!valid) return
+
+    const { code, data } = await reqSubmitOrder(params)
+
+    if (code === 200) {
+      this.orderNo = data
+      this.advancePay()
+    }
+  },
+
+  // 获取预付单信息和参数
+  async advancePay() {
+    try {
+      const payParams = await reqPreBuyInfo(this.orderNo)
+      if (payParams.code === 200) {
+        // const payInfo = await wx.requestPayment(payParams.data)
+        if (1 === 1) {
+          // const payStatus = await reqPayStatus(this.orderNo)
+          if (1 === 1) {
+            wx.redirectTo({
+              url: '/modules/orderModule/pages/order/list/list',
+              success: () => {
+                toast({
+                  icon: 'success',
+                  title: '支付成功'
+                })
+              }
+            })
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error)
+      toast({
+        title: '支付遇到问题',
+        icon: 'error'
+      })
+    }
   },
   // 订单信息表单验证
   validatePerson(params) {

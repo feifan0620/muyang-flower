@@ -127,5 +127,17 @@ Page({
     this.getGoodsInfo()
     // 获取购物车商品总数量
     this.getCartCount()
-  }
+  },
+
+  // 发送页面到好友、群聊功能
+  onShareAppMessage() {
+    return {
+      title: '所有的怦然心动，都是你',
+      path: '/pages/index/index',
+      imageUrl: '../../../../../assets/images/love.jpg'
+    }
+  },
+
+  // 发送到朋友圈
+  onShareTimeline() {}
 })

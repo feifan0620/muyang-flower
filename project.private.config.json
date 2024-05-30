@@ -5,7 +5,7 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "libVersion": "3.4.4",
+  "libVersion": "3.4.5",
   "condition": {
     "miniprogram": {
       "list": [
@@ -18,7 +18,7 @@
         },
         {
           "name": "账户设置",
-          "pathName": "pages/settings/settings",
+          "pathName": "/modules/settingModule/pages/settings/settings",
           "query": "",
           "launchMode": "default",
           "scene": null

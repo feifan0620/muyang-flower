@@ -84,5 +84,17 @@ Page({
     // 对象合并，从后向前合并，相同的属性将会被覆盖
     Object.assign(this.data.requestData, options)
     this.getGoodsList()
-  }
+  },
+
+  // 发送页面到好友、群聊功能
+  onShareAppMessage() {
+    return {
+      title: '所有的怦然心动，都是你',
+      path: '/pages/index/index',
+      imageUrl: '../../../../../assets/images/love.jpg'
+    }
+  },
+
+  // 发送到朋友圈
+  onShareTimeline() {}
 })

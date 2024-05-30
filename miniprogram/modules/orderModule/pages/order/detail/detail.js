@@ -12,16 +12,19 @@ Page({
     buyPhone: '13285462310', // 订购人手机号
     orderAddress: {}, // 订单收货地址
     orderInfo: {}, // 订单详情
-    deliveryDate: '', // 期望送达日期
+    deliveryDate: '2024-5-30', // 期望送达日期
     blessing: '', // 祝福语
     show: false, // 期望送达日期弹框
     minDate: new Date().getTime(),
     currentDate: new Date().getTime()
   },
 
+  // 提交订单
   async orderSubmit() {
+    // 从 data 中结构出需要的参数
     const { buyName, buyPhone, orderAddress, orderInfo, deliveryDate, blessing } = this.data
 
+    // 组织提交订单接口需要的参数列表
     const params = {
       buyName,
       buyPhone,
@@ -31,14 +34,19 @@ Page({
       userAddressId: orderAddress.id
     }
 
+    // 验证填写的订单信息是否合法
     const { valid } = await this.validatePerson(params)
 
+    // 如果验证不通过则不执行后续的漏记
     if (!valid) return
 
+    // 获取服务器返回的数据
     const { code, data } = await reqSubmitOrder(params)
 
+    // 如果订单提交成功则将返回的订单编号挂载到页面实例上
     if (code === 200) {
       this.orderNo = data
+      // 获取预付单信息和参数并发起微信支付
       this.advancePay()
     }
   },
@@ -49,8 +57,10 @@ Page({
       const payParams = await reqPreBuyInfo(this.orderNo)
       if (payParams.code === 200) {
         // const payInfo = await wx.requestPayment(payParams.data)
+        // if (payInfo.errMsg === 'requestPayment:ok')
         if (1 === 1) {
           // const payStatus = await reqPayStatus(this.orderNo)
+          // if (payStatus.code === 200)
           if (1 === 1) {
             wx.redirectTo({
               url: '/modules/orderModule/pages/order/list/list',

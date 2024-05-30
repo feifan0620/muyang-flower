@@ -2,6 +2,7 @@ import { reqLogin, reqUserInfo } from '../../api/user'
 import { toast } from '../../utils/extendApi'
 import { userStore } from '../../stores/userStore'
 import { ComponentWithStore } from 'mobx-miniprogram-bindings'
+import { debounce } from 'miniprogram-licia'
 
 ComponentWithStore({
   storeBindings: {
@@ -12,7 +13,7 @@ ComponentWithStore({
 
   methods: {
     // 点击登录
-    login() {
+    login: debounce(function () {
       // 调用 wx.login 获取用户信息
       wx.login({
         success: async ({ code }) => {
@@ -42,6 +43,6 @@ ComponentWithStore({
           // toast({ title: '授权登陆成功' })
         }
       })
-    }
+    }, 500)
   }
 })

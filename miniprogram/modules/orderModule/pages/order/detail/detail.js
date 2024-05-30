@@ -3,6 +3,7 @@ import { formatTime } from '@/utils/formatTime'
 import { toast } from '@/utils/extendApi'
 // 引入async-validator,对参数进行验证
 import Schema from 'async-validator'
+import { debounce } from 'miniprogram-licia'
 // 获取 App 实例
 const app = getApp()
 
@@ -20,7 +21,7 @@ Page({
   },
 
   // 提交订单
-  async orderSubmit() {
+  orderSubmit: debounce(async function () {
     // 从 data 中结构出需要的参数
     const { buyName, buyPhone, orderAddress, orderInfo, deliveryDate, blessing } = this.data
 
@@ -49,7 +50,7 @@ Page({
       // 获取预付单信息和参数并发起微信支付
       this.advancePay()
     }
-  },
+  }, 500),
 
   // 获取预付单信息和参数
   async advancePay() {
@@ -191,8 +192,8 @@ Page({
     })
   },
 
+  // 页面显示时获取订单收货地址数据和订单详情数据
   onShow() {
-    // 页面显示时获取订单收货地址数据和订单详情数据
     this.getAddress()
     this.getOrderInfo()
   },

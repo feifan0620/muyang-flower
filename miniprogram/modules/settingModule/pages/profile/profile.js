@@ -1,6 +1,7 @@
 import { userBehavior } from './behavior'
-import { asyncGetStorage, asyncSetStorage } from '../../../../utils/storage'
+import { asyncSetStorage } from '../../../../utils/storage'
 import { toast } from '../../../../utils/extendApi'
+import { reqUserInfo } from '@/api/user'
 import { reqUpdateUserInfo, reqUploadFile } from '../../../../api/user'
 Page({
   behaviors: [userBehavior],

@@ -27,7 +27,8 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "condition": true
   },
   "condition": {},
   "editorSetting": {
@@ -40,5 +41,9 @@
     "global": {
       "loading": "shine"
     }
+  },
+  "projectArchitecture": "multiPlatform",
+  "simulatorPluginLibVersion": {
+    "wxext14566970e7e9f62": "3.0.2-8"
   }
 }

@@ -9,11 +9,11 @@ const app = getApp()
 
 Page({
   data: {
-    buyName: 'dasd', // 订购人姓名
-    buyPhone: '13285462310', // 订购人手机号
+    buyName: '', // 订购人姓名
+    buyPhone: '', // 订购人手机号
     orderAddress: {}, // 订单收货地址
     orderInfo: {}, // 订单详情
-    deliveryDate: '2024-5-30', // 期望送达日期
+    deliveryDate: '', // 期望送达日期
     blessing: '', // 祝福语
     show: false, // 期望送达日期弹框
     minDate: new Date().getTime(),

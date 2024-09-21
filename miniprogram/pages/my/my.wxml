@@ -69,8 +69,5 @@
         <text>鲜花可以提前7-15天预订重大节假日不支持定时配送</text>
       </view>
     </view>
-
-    <!-- 底部面板 -->
-    <view class="info-footer"> feifan.ltd 技术支持 </view>
   </view>
 </view>

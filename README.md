@@ -30,7 +30,6 @@
 <img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E9%A6%96%E9%A1%B5.png"/>
 <img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E5%88%86%E7%B1%BB%E9%A1%B5.png"/>
 <img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E8%B4%AD%E7%89%A9%E8%BD%A6.png"/>
-<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E6%88%91%E7%9A%84.png"/>
 <img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85.png"/>
 <img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my-%E8%AE%A2%E5%8D%95%E7%BB%93%E7%AE%97.png"/>
 <img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E8%AE%A2%E5%8D%95%E9%A1%B5.png"/>

@@ -3,9 +3,6 @@
 ## 项目简介
 沐阳花舍是一款基于微信小程序原生语法和 Vant UI 组件库开发的鲜花配送电商平台。该小程序旨在为用户提供便捷的鲜花购买体验，支持多种业务功能，包括商品浏览、用户登录、购物车管理及订单处理等。
 
-![](https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E9%A6%96%E9%A1%B5.png)
-
-
 
 ## 功能特性
 - **首页**：展示分类信息和推荐信息与促销活动。
@@ -25,6 +22,21 @@
 - Vant Weapp UI 组件库
 - 微信开放接口（如微信登录API）
 - 腾讯位置服务
+
+
+主要页面截图如下：
+
+<p align="center">
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E9%A6%96%E9%A1%B5.png"/>
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E5%88%86%E7%B1%BB%E9%A1%B5.png"/>
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E8%B4%AD%E7%89%A9%E8%BD%A6.png"/>
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E6%88%91%E7%9A%84.png"/>
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85.png"/>
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my-%E8%AE%A2%E5%8D%95%E7%BB%93%E7%AE%97.png"/>
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E8%AE%A2%E5%8D%95%E9%A1%B5.png"/>
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E4%BD%8D%E7%BD%AE%E6%90%9C%E7%B4%A2.png"/>
+<img src="https://my-website-assets-1323233637.cos.ap-guangzhou.myqcloud.com/imgs/my%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF.png"/>
+</p>
 
 
 ## 环境搭建
